@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './transaction.dart';
 
 void main() {
   runApp(ExpenseApp());
@@ -15,6 +16,16 @@ class ExpenseApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  Transaction d;
+  final List<Transaction> transactions = [
+    Transaction(
+        id: 'T1', title: 'Yeezeys', amount: 130000, date: DateTime.now()),
+    Transaction(
+        id: 'T2', title: 'Watchpiece', amount: 100, date: DateTime.now()),
+    Transaction(
+        id: 'T3', title: 'Toothbrush', amount: 50, date: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +44,24 @@ class HomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            color: Colors.red,
-            child: Text("List of Expenses:"),
-          ),
+          Column(
+            children: transactions.map((tx) {
+              return Card(
+                  child: Row(
+                children: [
+                  Container(
+                    child: Text(tx.amount.toString()),
+                  ),
+                  Column(
+                    children: [
+                      Text(tx.title),
+                      Text(tx.date.toString()),
+                    ],
+                  )
+                ],
+              ));
+            }).toList(),
+          )
         ],
       ),
     );
