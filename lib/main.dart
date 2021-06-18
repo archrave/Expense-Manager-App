@@ -43,14 +43,22 @@ class HomePage extends StatelessWidget {
               child: Text("CHART"),
               elevation: 5,
             ),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 2),
+            ),
           ),
           Column(
             children: transactions.map((tx) {
               return Card(
                   child: Row(
-                children: [
+                children: <Widget>[
                   Container(
+                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    padding: EdgeInsets.all(10),
                     child: Text(tx.amount.toString()),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.purple, width: 2),
+                    ),
                   ),
                   Column(
                     children: [
