@@ -22,23 +22,25 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense Manager'),
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.green,
-              child: Text("CHART"),
-              elevation: 5,
+      body: SingleChildScrollView(
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.green,
+                child: Text("CHART"),
+                elevation: 5,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 2),
+              ),
             ),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 2),
-            ),
-          ),
-          UserTransactions(),
-        ],
+            UserTransactions(),
+          ],
+        ),
       ),
     );
   }
