@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
         title: Text('Expense Manager'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -53,17 +54,34 @@ class HomePage extends StatelessWidget {
                   child: Row(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    margin: EdgeInsets.fromLTRB(20, 20, 50, 20),
                     padding: EdgeInsets.all(10),
-                    child: Text(tx.amount.toString()),
+                    child: Text('₹${tx.amount.toString()}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple,
+                        )),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple, width: 2),
                     ),
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(tx.title),
-                      Text(tx.date.toString()),
+                      Text(
+                        tx.title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(DateFormat.yMMMd().format(tx.date),
+                          style: TextStyle(
+                            //fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          )),
                     ],
                   )
                 ],
