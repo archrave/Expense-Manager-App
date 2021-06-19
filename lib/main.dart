@@ -27,6 +27,10 @@ class HomePage extends StatelessWidget {
         id: 'T3', title: 'Toothbrush', amount: 50, date: DateTime.now()),
   ];
 
+  // String inputText;
+  // String inputCost;
+  final textController = TextEditingController();
+  final costController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,30 +55,42 @@ class HomePage extends StatelessWidget {
           Card(
             elevation: 5,
             child: Container(
-              //margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Cost'),
-                  ),
-                  FlatButton(
-                      child: Text(
-                        "Add Transaction",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.purple,
+                //margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                      controller: textController,
+                      // onChanged: (value) {
+                      //   inputText = value;
+                      // },
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Cost'),
+                      controller: costController,
+                      // onChanged: (value) {
+                      //   inputCost = value;
+                      // },
+                    ),
+                    FlatButton(
+                        child: Text(
+                          "Add Transaction",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.purple,
+                          ),
                         ),
-                      ),
-                      onPressed: () {}),
-                ],
-              ),
-            ),
+                        onPressed: () {
+                          //   print('Title: $inputText');
+                          //   print('Cost: $inputCost');
+                          print('Title: ${textController.text}');
+                          print('Cost: ${costController.text}');
+                        }),
+                  ],
+                )),
           ),
           Column(
             children: transactions.map((tx) {
