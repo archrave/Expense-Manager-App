@@ -48,6 +48,34 @@ class HomePage extends StatelessWidget {
               border: Border.all(color: Colors.black, width: 2),
             ),
           ),
+          Card(
+            elevation: 5,
+            child: Container(
+              //margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Cost'),
+                  ),
+                  FlatButton(
+                      child: Text(
+                        "Add Transaction",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.purple,
+                        ),
+                      ),
+                      onPressed: () {}),
+                ],
+              ),
+            ),
+          ),
           Column(
             children: transactions.map((tx) {
               return Card(
@@ -55,8 +83,8 @@ class HomePage extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                    margin: EdgeInsets.fromLTRB(20, 20, 50, 20),
-                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                    padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                     child: Text('₹${tx.amount.toString()}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
