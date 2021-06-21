@@ -1,16 +1,18 @@
-# expense_planner_app
+# Expense Planner App
 
-A new Flutter project.
+An android and iOS app to list and manage the user's expenses, built on flutter and dart.
+All dart scripts are located inside the lib folder.
 
-## Getting Started
+Widgets are inside Expense-Manager-App/lib/widgets/
+Simple object models are in Expense-Manager-App/lib/classes/
 
-This project is a starting point for a Flutter application.
+## Tools
+- Flutter v2.2.1 SDK
+- Dart 2.13.1
+- Editor (VS Code or Android Studio)
 
-A few resources to get you started if this is your first Flutter project:
+## Instructions
+To run this app on a virtual machine (mobile emulator), your android device or your web browser, just clone the project, open your terminal inside that folder and use this command: flutter run
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+(Must have flutter in the system PATH, and USB Debugging enabled if you're using an Andriod device)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
