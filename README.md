@@ -3,8 +3,9 @@
 An android and iOS app to list and manage the user's expenses, built on flutter and dart.
 All dart scripts are located inside the lib folder.
 
-Widgets are inside Expense-Manager-App/lib/widgets/
-Simple object models are in Expense-Manager-App/lib/classes/
+- Widgets are inside Expense-Manager-App/lib/widgets/
+
+- Simple object models are in Expense-Manager-App/lib/classes/
 
 ## Tools
 - Flutter v2.2.1 SDK
