@@ -11,47 +11,54 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 350,
-      child: SingleChildScrollView(
-        child: Column(
-          children: transactions.map((tx) {
-            return Card(
-                child: Row(
-              children: <Widget>[
-                Container(
-                  //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                  child: Text('₹${tx.amount.toString()}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.purple,
-                      )),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.purple, width: 2),
-                  ),
+
+      //Substitute of Column, ListView needs a specified height to work:-
+
+      /* ListView.builder() gives better performance than normal ListView
+      since it only renders the items in the list which are displayed
+      on the screen. It also takes different arguments.*/
+
+      child: ListView.builder(
+        itemBuilder: (contx, index) {
+          return Card(
+              child: Row(
+            children: <Widget>[
+              Container(
+                //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                child: Text('₹${transactions[index].amount.toString()}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.purple,
+                    )),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.purple, width: 2),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      tx.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    transactions[index].title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
-                    Text(DateFormat.yMMMd().format(tx.date),
-                        style: TextStyle(
-                          //fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        )),
-                  ],
-                )
-              ],
-            ));
-          }).toList(),
-        ),
+                  ),
+                  Text(DateFormat.yMMMd().format(transactions[index].date),
+                      style: TextStyle(
+                        //fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      )),
+                ],
+              )
+            ],
+          ));
+        },
+        itemCount: transactions.length,
+        //children: transactions.map((tx)// Don't need a map function now.
       ),
     );
   }
