@@ -11,6 +11,19 @@ class NewTransaction extends StatelessWidget {
   final textController = TextEditingController();
   final costController = TextEditingController();
 
+  void submitData() {
+    final enteredTitle = textController.text;
+    final enteredCost = double.parse(costController.text);
+    if (enteredTitle.isEmpty || enteredCost <= 0) {
+      return;
+    }
+
+    newTransactionRef(
+      enteredTitle,
+      enteredCost,
+    );
+  }
+
   NewTransaction(this.newTransactionRef);
   @override
   Widget build(BuildContext context) {
@@ -25,6 +38,7 @@ class NewTransaction extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(labelText: 'Title'),
                 controller: textController, //Value gets saved every frame
+                onSubmitted: (_) => submitData(), // _ is a useless variable
                 // onChanged: (value) {
                 //   inputText = value;
                 // },
@@ -32,27 +46,25 @@ class NewTransaction extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(labelText: 'Cost'),
                 controller: costController,
+                keyboardType: TextInputType.number, //For Android
+                onSubmitted: (_) => submitData(), // _ is a useless variable
+
+                //keyboardType: TextInputType.numberWithOptions(decimal: true),     //For iOS
                 // onChanged: (value) {
                 //   inputCost = value;
                 // },
               ),
               FlatButton(
-                  child: Text(
-                    "Add Transaction",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.purple,
-                    ),
+                child: Text(
+                  "Add Transaction",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.purple,
                   ),
-                  onPressed: () {
-                    //   print('Title: $inputText');
-                    //   print('Cost: $inputCost');
-                    newTransactionRef(
-                        textController.text, double.parse(costController.text));
-                    print('Title: ${textController.text}');
-                    print('Cost: ${costController.text}');
-                  }),
+                ),
+                onPressed: () => submitData(),
+              ),
             ],
           )),
     );
