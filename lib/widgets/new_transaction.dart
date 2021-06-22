@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   //const NewTransaction({Key? key}) : super(key: key);
 
   final Function newTransactionRef;
@@ -8,7 +8,15 @@ class NewTransaction extends StatelessWidget {
   // String inputCost;
 
   //This TextEditigController is from flutter to run the controller: function every frame
+  NewTransaction(this.newTransactionRef);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final textController = TextEditingController();
+
   final costController = TextEditingController();
 
   void submitData() {
@@ -18,13 +26,15 @@ class NewTransaction extends StatelessWidget {
       return;
     }
 
-    newTransactionRef(
+    widget.newTransactionRef(
       enteredTitle,
       enteredCost,
     );
+    //This method closes the top most sheet when called, in our case the modal sheet
+
+    Navigator.of(context).pop();
   }
 
-  NewTransaction(this.newTransactionRef);
   @override
   Widget build(BuildContext context) {
     return Card(
