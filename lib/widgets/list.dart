@@ -58,7 +58,7 @@ class TransactionList extends StatelessWidget {
           ));
         },
         itemCount: transactions.length,
-        //children: transactions.map((tx)// Don't need a map function now.
+        //children: transactions.map((tx)   // Don't need a map function now.
       ),
     );
   }

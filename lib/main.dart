@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import './widgets/user_transaction.dart';
+import './classes/transaction.dart';
+import './widgets/new_transaction.dart';
+import './widgets/list.dart';
 
 void main() {
   runApp(ExpenseApp());
@@ -15,14 +17,54 @@ class ExpenseApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<Transaction> _userTransactions = [
+    Transaction(id: 'T1', title: 'Pizza', amount: 130, date: DateTime.now()),
+    Transaction(
+        id: 'T2', title: 'Watchpiece', amount: 1000, date: DateTime.now()),
+    Transaction(
+        id: 'T3', title: 'Toothbrush', amount: 50, date: DateTime.now()),
+  ];
+
+  void _startAddTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return NewTransaction(_addNewTransaction);
+      },
+    );
+  }
+
+  void _addNewTransaction(String txtitle, double txamount) {
+    final newTx = Transaction(
+      title: txtitle,
+      amount: txamount,
+      date: DateTime.now(),
+      id: DateTime.now().toString(),
+    );
+    setState(() {
+      /*   .add function is used since that list object can be changed, 
+        but the value inside _userTransactions (pointer) cannnot be changed 
+        since final is used   */
+      _userTransactions.add(newTx);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Expenses Manager'),
           actions: [
-            IconButton(icon: Icon(Icons.add), onPressed: () {}),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => _startAddTransaction(context),
+            ),
           ],
         ),
         body: SingleChildScrollView(
@@ -41,14 +83,14 @@ class HomePage extends StatelessWidget {
                   border: Border.all(color: Colors.black, width: 2),
                 ),
               ),
-              UserTransactions(),
+              TransactionList(_userTransactions),
             ],
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () => _startAddTransaction(context),
         ));
   }
 }
