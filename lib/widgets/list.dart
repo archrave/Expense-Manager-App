@@ -18,47 +18,64 @@ class TransactionList extends StatelessWidget {
       since it only renders the items in the list which are displayed
       on the screen. It also takes different arguments.*/
 
-      child: ListView.builder(
-        itemBuilder: (contx, index) {
-          return Card(
-              child: Row(
-            children: <Widget>[
-              Container(
-                //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Theme.of(context).primaryColorDark, width: 2),
+      child: transactions.isEmpty
+          ? Column(
+              children: [
+                Text("No transactions added yet.",
+                    style: Theme.of(context).textTheme.title),
+                SizedBox(
+                  height: 50,
                 ),
-                child: Text('₹${transactions[index].amount.toStringAsFixed(2)}',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Theme.of(context).primaryColorDark,
-                      fontFamily: 'Quicksand',
-                    )),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    transactions[index].title,
-                    style: Theme.of(context).textTheme.title,
-                  ),
-                  Text(DateFormat.yMMMd().format(transactions[index].date),
-                      style: TextStyle(
-                        //fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      )),
-                ],
-              )
-            ],
-          ));
-        },
-        itemCount: transactions.length,
-        //children: transactions.map((tx)   // Don't need a map function now.
-      ),
+                Container(
+                  height: 150,
+                  child: Image.asset('images/waiting.png'),
+                )
+              ],
+            )
+          : ListView.builder(
+              itemBuilder: (contx, index) {
+                return Card(
+                    child: Row(
+                  children: <Widget>[
+                    Container(
+                      //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                      margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).primaryColorDark,
+                            width: 2),
+                      ),
+                      child: Text(
+                          '₹${transactions[index].amount.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Theme.of(context).primaryColorDark,
+                            fontFamily: 'Quicksand',
+                          )),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          transactions[index].title,
+                          style: Theme.of(context).textTheme.title,
+                        ),
+                        Text(
+                            DateFormat.yMMMd().format(transactions[index].date),
+                            style: TextStyle(
+                              //fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            )),
+                      ],
+                    )
+                  ],
+                ));
+              },
+              itemCount: transactions.length,
+              //children: transactions.map((tx)   // Don't need a map function now.
+            ),
     );
   }
 }

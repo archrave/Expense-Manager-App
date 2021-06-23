@@ -42,13 +42,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Transaction> _userTransactions = [
-    Transaction(id: 'T1', title: 'Pizza', amount: 130, date: DateTime.now()),
-    Transaction(
-        id: 'T2', title: 'Watchpiece', amount: 1000, date: DateTime.now()),
-    Transaction(
-        id: 'T3', title: 'Toothbrush', amount: 50, date: DateTime.now()),
-  ];
+  final List<Transaction> _userTransactions = [];
 
   void _startAddTransaction(BuildContext ctx) {
     showModalBottomSheet(
