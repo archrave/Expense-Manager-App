@@ -12,6 +12,25 @@ class ExpenseApp extends StatelessWidget {
   Widget build(BuildContext text) {
     return MaterialApp(
       title: 'Expense Manager',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        accentColor: Colors.blueGrey,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
+        appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  title: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+      ),
       home: HomePage(),
     );
   }

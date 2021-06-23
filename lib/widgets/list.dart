@@ -27,25 +27,24 @@ class TransactionList extends StatelessWidget {
                 //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Theme.of(context).primaryColorDark, width: 2),
+                ),
                 child: Text('₹${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColorDark,
+                      fontFamily: 'Quicksand',
                     )),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.purple, width: 2),
-                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     transactions[index].title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+                    style: Theme.of(context).textTheme.title,
                   ),
                   Text(DateFormat.yMMMd().format(transactions[index].date),
                       style: TextStyle(
