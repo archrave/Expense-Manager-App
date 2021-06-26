@@ -1,6 +1,6 @@
 # Expense Planner App
 
-An android and iOS app to list and manage the user's expenses, built on flutter and dart.
+An android and iOS app to list and manage the users expenses, built on flutter and dart.
 All dart scripts are located inside the lib folder.
 
 - Widgets are inside Expense-Manager-App/lib/widgets/
@@ -13,12 +13,16 @@ All dart scripts are located inside the lib folder.
 - Editor (VS Code or Android Studio)
 
 ## Preview
-
+<p align="center">
  <img src="./screenshots/finalexpense (1).png" width="500" title="hover text">
- <img src="./screenshots/finalexpense (2).png" width="500" title="hover text">
- <img src="./screenshots/finalexpense (3).png" width="500" title="hover text">
- <img src="./screenshots/finalexpense (4).png" width="500" title="hover text">
  
+ <img src="./screenshots/finalexpense (2).png" width="500" title="hover text">
+ 
+ <img src="./screenshots/finalexpense (3).png" width="500" title="hover text">
+ 
+ <img src="./screenshots/finalexpense (4).png" width="500" title="hover text">
+</p>
+
 ## Instructions
 To run this app on a virtual machine (mobile emulator), your android device or your web browser, just clone the project, open your terminal inside that folder and use this command: flutter run
 
