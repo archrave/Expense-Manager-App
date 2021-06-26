@@ -22,13 +22,14 @@ class _NewTransactionState extends State<NewTransaction> {
   void submitData() {
     final enteredTitle = _textController.text;
     final enteredCost = double.parse(_costController.text);
-    if (enteredTitle.isEmpty || enteredCost <= 0 || _selectedDate == n) {
+    if (enteredTitle.isEmpty || enteredCost <= 0 || _selectedDate == null) {
       return;
     }
 
     widget.newTransactionRef(
       enteredTitle,
       enteredCost,
+      _selectedDate,
     );
     //This method closes the top most sheet when called, in our case the modal sheet
     Navigator.of(context).pop();
