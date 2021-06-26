@@ -1,4 +1,3 @@
-import 'package:expense_planner_app/widgets/chart.dart';
 import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget {
@@ -11,9 +10,10 @@ class ChartBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      FittedBox(
-          child: Text(
-              "₹${spendingAmount.toStringAsFixed(0)}")), //Restricting text to take more space
+      Container(
+        height: 20,
+        child: FittedBox(child: Text("₹${spendingAmount.toStringAsFixed(0)}")),
+      ), //Restricting text to take more space
       SizedBox(height: 4),
       Container(
         height: 60,

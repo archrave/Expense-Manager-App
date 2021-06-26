@@ -3,21 +3,19 @@ import '../classes/transaction.dart';
 import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
-  final List<Transaction> transactions;
+  final List<Transaction> straightTransactions;
 
-  TransactionList(this.transactions);
+  TransactionList(this.straightTransactions);
+
+  List<Transaction> get transactions {
+    return straightTransactions.reversed
+        .toList(); //Just reversed the list so that the latest transaction appears at the top
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 350,
-
-      //Substitute of Column, ListView needs a specified height to work:-
-
-      /* ListView.builder() gives better performance than normal ListView
-      since it only renders the items in the list which are displayed
-      on the screen. It also takes different arguments.*/
-
       child: transactions.isEmpty
           ? Column(
               children: [
@@ -32,6 +30,13 @@ class TransactionList extends StatelessWidget {
                 )
               ],
             )
+
+          //Substitute of Column, ListView needs a specified height to work:-
+
+          /* ListView.builder() gives better performance than normal ListView
+      since it only renders the items in the list which are displayed
+      on the screen. It also takes different arguments.*/
+
           : ListView.builder(
               itemBuilder: (contx, index) {
                 return Card(
