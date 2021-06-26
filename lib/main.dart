@@ -16,6 +16,7 @@ class ExpenseApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         accentColor: Colors.blueGrey,
+        errorColor: Colors.grey,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               title: TextStyle(
@@ -79,6 +80,12 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((element) => id == element.id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,7 +104,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Chart(_recentTransactions),
-              TransactionList(_userTransactions),
+              TransactionList(_userTransactions, _deleteTransaction),
             ],
           ),
         ),

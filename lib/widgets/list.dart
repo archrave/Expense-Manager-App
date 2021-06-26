@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> straightTransactions;
-
-  TransactionList(this.straightTransactions);
+  final Function dltTransaction;
+  TransactionList(this.straightTransactions, this.dltTransaction);
 
   List<Transaction> get transactions {
     return straightTransactions.reversed
@@ -60,6 +60,13 @@ class TransactionList extends StatelessWidget {
                     ),
                     subtitle: Text(
                         DateFormat.yMMMMd().format(transactions[index].date)),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () {
+                        dltTransaction(transactions[index].id);
+                      },
+                    ),
                   ),
                 );
               },
