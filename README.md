@@ -12,6 +12,13 @@ All dart scripts are located inside the lib folder.
 - Dart 2.13.1
 - Editor (VS Code or Android Studio)
 
+## Preview
+
+ <img src="./screenshots/finalexpense (1).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (2).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (3).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (4).png" width="500" title="hover text">
+ 
 ## Instructions
 To run this app on a virtual machine (mobile emulator), your android device or your web browser, just clone the project, open your terminal inside that folder and use this command: flutter run
 
