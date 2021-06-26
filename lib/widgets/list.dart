@@ -35,43 +35,28 @@ class TransactionList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (contx, index) {
                 return Card(
-                    child: Row(
-                  children: <Widget>[
-                    Container(
-                      //margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                      margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).primaryColorDark,
-                            width: 2),
-                      ),
-                      child: Text(
-                          '₹${transactions[index].amount.toStringAsFixed(2)}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Theme.of(context).primaryColorDark,
-                            fontFamily: 'Quicksand',
-                          )),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          transactions[index].title,
-                          style: Theme.of(context).textTheme.title,
+                  elevation: 5,
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: EdgeInsets.all(6),
+                        child: FittedBox(
+                          child: Text(
+                            '₹${transactions[index].amount.toStringAsFixed(2)}',
+                          ),
                         ),
-                        Text(
-                            DateFormat.yMMMd().format(transactions[index].date),
-                            style: TextStyle(
-                              //fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            )),
-                      ],
-                    )
-                  ],
-                ));
+                      ),
+                    ),
+                    title: Text(
+                      transactions[index].title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                        DateFormat.yMMMMd().format(transactions[index].date)),
+                  ),
+                );
               },
               itemCount: transactions.length,
               //children: transactions.map((tx)   // Don't need a map function now.
