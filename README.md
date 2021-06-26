@@ -14,13 +14,13 @@ All dart scripts are located inside the lib folder.
 
 ## Preview
 <p align="center">
- <img src="./screenshots/finalexpense (1).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (1).png" width="550" title="hover text">
  
- <img src="./screenshots/finalexpense (2).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (2).png" width="550" title="hover text">
  
- <img src="./screenshots/finalexpense (3).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (3).png" width="550" title="hover text">
  
- <img src="./screenshots/finalexpense (4).png" width="500" title="hover text">
+ <img src="./screenshots/finalexpense (4).png" width="550" title="hover text">
 </p>
 
 ## Instructions
