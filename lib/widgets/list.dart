@@ -16,19 +16,21 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: transactions.isEmpty
-          ? Column(
-              children: [
-                Text("No transactions added yet.",
-                    style: Theme.of(context).textTheme.title),
-                SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  height: 150,
-                  child: Image.asset('images/waiting.png'),
-                )
-              ],
-            )
+          ? LayoutBuilder(builder: (ctx, constraints) {
+              return Column(
+                children: [
+                  Text("No transactions added yet.",
+                      style: Theme.of(context).textTheme.title),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset('images/waiting.png'),
+                  )
+                ],
+              );
+            })
 
           //Substitute of Column, ListView needs a specified height to work:-
 
