@@ -10,7 +10,7 @@ void main() {
 
 class ExpenseApp extends StatelessWidget {
   @override
-  Widget build(BuildContext text) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Expense Manager',
       theme: ThemeData(
@@ -88,23 +88,35 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Expenses Manager'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () => _startAddTransaction(context),
-            ),
-          ],
+    final appBar = AppBar(
+      title: Text('Expenses Manager'),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _startAddTransaction(context),
         ),
+      ],
+    );
+    return Scaffold(
+        appBar: appBar,
         body: SingleChildScrollView(
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Chart(_recentTransactions),
-              TransactionList(_userTransactions, _deleteTransaction),
+              Container(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.3,
+                  child: Chart(_recentTransactions)),
+              Container(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.7,
+                  child:
+                      TransactionList(_userTransactions, _deleteTransaction)),
             ],
           ),
         ),
