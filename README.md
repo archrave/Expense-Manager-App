@@ -8,8 +8,8 @@ All dart scripts are located inside the lib folder.
 - Simple object models are in Expense-Manager-App/lib/classes/
 
 ## Tools
-- Flutter v2.2.1 SDK
-- Dart 2.13.1
+- Flutter v2.2.2 SDK
+- Dart 2.13.3
 - Editor (VS Code or Android Studio)
 
 ## Preview
