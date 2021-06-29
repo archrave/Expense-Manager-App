@@ -5,8 +5,6 @@ class NewTransaction extends StatefulWidget {
   //const NewTransaction({Key? key}) : super(key: key);
 
   final Function newTransactionRef;
-  // String inputText;
-  // String inputCost;
 
   //This TextEditigController is from flutter to run the controller: function every frame
   NewTransaction(this.newTransactionRef);
@@ -53,55 +51,64 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-          //margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              TextField(
-                decoration: InputDecoration(labelText: 'Title'),
-                controller: _textController, //Value gets saved every frame
-                onSubmitted: (_) => submitData(), // _ is a useless variable
-              ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Cost'),
-                controller: _costController,
-                keyboardType: TextInputType.number, //For Android
-                onSubmitted: (_) => submitData(), // _ is a useless variable
-
-                //keyboardType: TextInputType.numberWithOptions(decimal: true),     //For iOS
-              ),
-              Container(
-                height: 70,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(_selectedDate == null
-                          ? "No Date Chosen"
-                          : "Picked Date: ${DateFormat.yMd().format(_selectedDate)}"),
-                    ),
-                    FlatButton(
-                      child: Text(
-                        "Choose Date",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      textColor: Theme.of(context).primaryColor,
-                      onPressed: _pickDate,
-                    )
-                  ],
+    return SingleChildScrollView(
+      //Now the bottomModalSheet is scrollable
+      child: Card(
+        elevation: 5,
+        child: Container(
+            //margin: EdgeInsets.all(10),
+            padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              //viewInsets tells us about anything lapping our view, in this case, the keyboard
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                TextField(
+                  decoration: InputDecoration(labelText: 'Title'),
+                  controller: _textController, //Value gets saved every frame
+                  onSubmitted: (_) => submitData(), // _ is a useless variable
                 ),
-              ),
-              FlatButton(
-                child: Text("Add Transaction"),
-                color: Theme.of(context).accentColor,
-                textColor: Theme.of(context).textTheme.button.color,
-                onPressed: () => submitData(),
-              ),
-            ],
-          )),
+                TextField(
+                  decoration: InputDecoration(labelText: 'Cost'),
+                  controller: _costController,
+                  keyboardType: TextInputType.number, //For Android
+                  onSubmitted: (_) => submitData(), // _ is a useless variable
+
+                  //keyboardType: TextInputType.numberWithOptions(decimal: true),     //For iOS
+                ),
+                Container(
+                  height: 70,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(_selectedDate == null
+                            ? "No Date Chosen"
+                            : "Picked Date: ${DateFormat.yMd().format(_selectedDate)}"),
+                      ),
+                      FlatButton(
+                        child: Text(
+                          "Choose Date",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        textColor: Theme.of(context).primaryColor,
+                        onPressed: _pickDate,
+                      )
+                    ],
+                  ),
+                ),
+                FlatButton(
+                  child: Text("Add Transaction"),
+                  color: Theme.of(context).accentColor,
+                  textColor: Theme.of(context).textTheme.button.color,
+                  onPressed: () => submitData(),
+                ),
+              ],
+            )),
+      ),
     );
   }
 }
