@@ -19,11 +19,16 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _textController = TextEditingController();
   final _costController = TextEditingController();
-  DateTime _selectedDate;
+  DateTime _selectedDate = DateTime.now();
+  DateTime _todaysDate;
+
+  _NewTransactionState() {
+    _todaysDate = _selectedDate;
+  }
   void submitData() {
     final enteredTitle = _textController.text;
     final enteredCost = double.parse(_costController.text);
-    if (enteredTitle.isEmpty || enteredCost <= 0 || _selectedDate == null) {
+    if (enteredTitle.isEmpty || enteredCost <= 0) {
       return;
     }
 
@@ -37,7 +42,7 @@ class _NewTransactionState extends State<NewTransaction> {
   }
 
   void _pickDate() {
-    //This showDatePicker function returns an object of the 'Future' class in dart
+    // This showDatePicker function returns an object of the 'Future' class in dart
     // This Future object has a then() method
     showDatePicker(
             context: context,
@@ -65,7 +70,7 @@ class _NewTransactionState extends State<NewTransaction> {
               left: 10,
               right: 10,
               //viewInsets tells us about anything lapping our view, in this case, the keyboard
-              bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 20,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -88,9 +93,10 @@ class _NewTransactionState extends State<NewTransaction> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Text(_selectedDate == null
-                            ? "No Date Chosen"
-                            : "Picked Date: ${DateFormat.yMd().format(_selectedDate)}"),
+                        child: Text(DateFormat.yMd().format(_selectedDate) ==
+                                DateFormat.yMd().format(DateTime.now())
+                            ? "Date: ${DateFormat.yMd().format(_selectedDate)} (Today)"
+                            : "Date: ${DateFormat.yMd().format(_selectedDate)}"),
                       ),
                       AdaptiveFlatButton("Choose Date", _pickDate),
                     ],
