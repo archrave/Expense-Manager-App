@@ -25,7 +25,7 @@ class ExpenseApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         accentColor: Colors.blueGrey,
-        errorColor: Colors.grey,
+        errorColor: Colors.grey[600],
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               title: TextStyle(

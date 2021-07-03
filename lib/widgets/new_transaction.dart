@@ -20,11 +20,7 @@ class _NewTransactionState extends State<NewTransaction> {
   final _textController = TextEditingController();
   final _costController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
-  DateTime _todaysDate;
 
-  _NewTransactionState() {
-    _todaysDate = _selectedDate;
-  }
   void submitData() {
     final enteredTitle = _textController.text;
     final enteredCost = double.parse(_costController.text);
