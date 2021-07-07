@@ -94,7 +94,8 @@ class _NewTransactionState extends State<NewTransaction> {
                             ? "Date: ${DateFormat.yMd().format(_selectedDate)} (Today)"
                             : "Date: ${DateFormat.yMd().format(_selectedDate)}"),
                       ),
-                      AdaptiveFlatButton("Choose Date", _pickDate),
+                      AdaptiveFlatButton(
+                          text: "Choose Date", handler: _pickDate),
                     ],
                   ),
                 ),

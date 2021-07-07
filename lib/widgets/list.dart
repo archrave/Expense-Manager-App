@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../classes/transaction.dart';
-import 'package:intl/intl.dart';
+import './listitem.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> straightTransactions;
@@ -40,44 +40,9 @@ class TransactionList extends StatelessWidget {
 
           : ListView.builder(
               itemBuilder: (contx, index) {
-                return Card(
-                  elevation: 5,
-                  margin: EdgeInsets.all(10),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child: Padding(
-                        padding: EdgeInsets.all(6),
-                        child: FittedBox(
-                          child: Text(
-                            '₹${transactions[index].amount.toStringAsFixed(2)}',
-                          ),
-                        ),
-                      ),
-                    ),
-                    title: Text(
-                      transactions[index].title,
-                      style: Theme.of(context).textTheme.title,
-                    ),
-                    subtitle: Text(
-                        DateFormat.yMMMMd().format(transactions[index].date)),
-                    trailing: MediaQuery.of(context).size.width > 460
-                        ? FlatButton.icon(
-                            icon: Icon(Icons.delete),
-                            label: Text('Delete'),
-                            textColor: Theme.of(context).errorColor,
-                            onPressed: () {
-                              dltTransaction(transactions[index].id);
-                            })
-                        : IconButton(
-                            icon: Icon(Icons.delete),
-                            color: Theme.of(context).errorColor,
-                            onPressed: () {
-                              dltTransaction(transactions[index].id);
-                            },
-                          ),
-                  ),
-                );
+                return ListItem(
+                    transaction: transactions[index],
+                    dltTransaction: dltTransaction);
               },
               itemCount: transactions.length,
               //children: transactions.map((tx)   // Don't need a map function now.
